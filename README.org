@@ -1,0 +1,35 @@
+* General Resources
+| Name           | Email                   |
+|----------------+-------------------------|
+| Bryson Li      | brysonli@gmail.com      |
+| Wilson Chang   | ckwojai@gmail.com       |
+| Andrew Gao     | wbb1263@gmail.com       |
+| Eric Oh        | eric.sehun.oh@gmail.com |
+| Joel Mashita   | jrmashita@ucla.edux     |
+- Bryson's Team
+* Motivation
+* Expected Functionality
+* Wireless Technology  
+  - Bluetooth
+* Implementation Overview
+  1) Write an app that display keyboard
+  2) Write an app that display trackpad
+  3) Write an app to connect to computer through bluetooth
+  4) Write an app to put everything above together for our final app
+  5) Write program in computer to execute the according action
+* Responsibility Assignment
+  | Name         | Task |
+  |--------------+------|
+  | Bryson Li    |    5 |
+  | Wilson Chang |    4 |
+  | Andrew Gao   |    2 |
+  | Eric Oh      |    1 |
+  | Joel Mashita |    3 |
+* Work Schedule
+  | Week | Milestone |
+  |------+-----------|
+  |    4 |           |
+  |    5 |           |
+  |    6 |           |
+  |    7 |           |
+  |    8 |           |
