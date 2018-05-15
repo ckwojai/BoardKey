@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var switchPeripheral: UISwitch!
+    @IBAction func keyboardKeysClicked(_ sender: UIButton) {
+        ble?.keyboardState = sender.titleLabel!.text!
+    }
     var ble: BLEPeripheralManager?
-    
     // Activate / disActivate the peripheral
     @IBAction func switchOnOff(_ sender: UISwitch) {
         if self.switchPeripheral.isOn {
@@ -23,5 +25,5 @@ class ViewController: UIViewController {
             ble!.stopBLEPeripheral()
         }
     }
+    
 }
-

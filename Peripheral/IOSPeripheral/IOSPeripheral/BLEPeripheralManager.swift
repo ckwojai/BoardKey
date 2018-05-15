@@ -25,6 +25,17 @@ class BLEPeripheralManager: NSObject, CBPeripheralManagerDelegate {
     var localPeripheralManager: CBPeripheralManager!
     var localPeripheral: CBPeripheral?
     var createdService = [CBService]()
+    var keyboardState = "idle" {
+        didSet {
+            self.localPeripheralManager.updateValue(keyboardState.data(using: String.Encoding.utf8)!, for: createdService[0].characteristics![0] as! CBMutableCharacteristic, onSubscribedCentrals: nil)
+        }
+    }
+    // I don't know what these are
+    var notifyCharac: CBMutableCharacteristic? = nil
+    var notifyCentral: CBCentral? = nil
+    // timer used to retry to scan for peripheral, when we don't find it
+    var notifyValueTimer: Timer?
+
     // ==================
     // Delegate stud
     // ==================
@@ -59,6 +70,7 @@ class BLEPeripheralManager: NSObject, CBPeripheralManagerDelegate {
             print("Starting to advertise.")
         }
     }
+    // When Notification
     // When Central manager send read request
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         
@@ -66,10 +78,10 @@ class BLEPeripheralManager: NSObject, CBPeripheralManagerDelegate {
         print("request uuid: " + request.characteristic.uuid.uuidString)
         
         // prepare advertisement data
-        let data: Data = TextToAdvertise.data(using: String.Encoding.utf16)!
+        let data: Data = keyboardState.data(using: String.Encoding.utf8)!
         request.value = data //characteristic.value
         // Respond to the request
-        localPeripheralManager.respond( to: request, withResult: .success)
+        localPeripheralManager.respond(to: request, withResult: .success)
         
         // acknowledge : ok
         peripheral.respond(to: request, withResult: CBATTError.success)
@@ -95,6 +107,7 @@ class BLEPeripheralManager: NSObject, CBPeripheralManagerDelegate {
             print("peripheralManagerDidStartAdvertising OK")
         }
     }
+    
     func respond(to request: CBATTRequest, withResult result: CBATTError.Code) {
         print("respnse requested")
     }
@@ -104,7 +117,18 @@ class BLEPeripheralManager: NSObject, CBPeripheralManagerDelegate {
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
         print("peripheral service modified")
     }
-
+    // When Central subscribes to a characteristics
+    func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
+        print("peripheralManager didSubscribeTo characteristic :\n" + characteristic.uuid.uuidString)
+//
+//        if characteristic.uuid.uuidString == CH_READ {
+//            self.notifyCharac = characteristic as? CBMutableCharacteristic
+//            self.notifyCentral = central
+//
+//            // start a timer, which will update the value, every xyz seconds.
+//            self.notifyValueTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.notifyValue), userInfo: nil, repeats: true)
+//        }
+    }
     // ========================
     // Self defined fucntions
     // ========================
