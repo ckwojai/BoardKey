@@ -71,7 +71,7 @@ class BLECentralManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
             print(characteristic.value!.utf8String!)
             let ch: String = characteristic.value!.utf8String!
             executeKeypress(value: ch)
-            delegate?.logToScreen(text: ch)
+            // delegate?.logToScreen(text: ch)
         case IosKeyboardWriteCharCBUUID:
             print("Write Char")
             print(characteristic.value!)
@@ -85,7 +85,7 @@ class BLECentralManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
     // =============
     func startBLECentral() {
         print("startBLECentral")
-        delegate?.logToScreen(text: "startBLECentral")
+        // delegate?.logToScreen(text: "startBLECentral")
         // start the Bluetooth periphal manager
         localCentralManager = CBCentralManager(delegate: self, queue: nil)
     }

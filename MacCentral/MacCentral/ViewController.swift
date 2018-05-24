@@ -8,24 +8,30 @@
 
 import Cocoa
 
-class ViewController: NSViewController, BLEPeripheralProtocol {
+class ViewController: NSViewController {
     @IBOutlet weak var logTextView: NSScrollView!
     @IBOutlet weak var centralSwitch: NSButton!
     var ble: BLECentralManager?
     
-    @IBAction func centralSwitchOnOff(_ sender: NSButton) {
-        if centralSwitch.state == .on {
-            print("Starting peripheral")
-            ble = BLECentralManager()
-            ble?.delegate = self
-            ble!.startBLECentral()
-        } else {
-            ble!.startBLECentral()
-        }
+    override func viewDidLoad() {
+        print("Starting peripheral")
+        ble = BLECentralManager()
+        // ble?.delegate = self
+        ble!.startBLECentral()
     }
-    func logToScreen(text: String) {
-        print("Inside logToScreen")
-        logTextView.documentView?.insertText(text)
-    }
+//    @IBAction func centralSwitchOnOff(_ sender: NSButton) {
+//        if centralSwitch.state == .on {
+//            print("Starting peripheral")
+//            ble = BLECentralManager()
+//            ble?.delegate = self
+//            ble!.startBLECentral()
+//        } else {
+//            ble!.startBLECentral()
+//        }
+//    }
+//    func logToScreen(text: String) {
+//        print("Inside logToScreen")
+//        logTextView.documentView?.insertText(text)
+//    }
 }
 
