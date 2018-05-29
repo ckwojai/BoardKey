@@ -2,23 +2,24 @@
 //  Tools.swift
 //  MacCentral
 //
-//  Created by Wilson Chang on 5/15/18.
-//  Copyright © 2018 Wilson Chang. All rights reserved.
+//  Created by Wilson Chang, Bryson Li on 5/15/18.
+//  Copyright © 2018 Wilson Chang and Bryson. All rights reserved.
 //
 
 import Foundation
-    func keyboardKeyDown(key: CGKeyCode) {
+
+func keyboardKeyDown(key: CGKeyCode) {
         print("Inside core function")
         let source = CGEventSource(stateID: .hidSystemState)
         let event = CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: true)
         event?.post(tap: .cghidEventTap)
-    }
+}
     
-    func executeKeypress (value: String)
-    {
+func executeKeypress (value: String)
+{
         print("Executing Keypress")
         keyboardKeyDown(key: str2code(str: value))
-    }
+}
 func str2code(str: String) -> CGKeyCode {
     switch (str) {
     case ("A"): return                     0x00
