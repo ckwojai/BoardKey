@@ -1,3 +1,6 @@
+* BoardKey
+  - Check out our [[https://github.com/ckwojai/BoardKey/blob/master/Documents/final_presentation.pdf][Final Presentation]]
+  - Check out our [[https://github.com/ckwojai/BoardKey/blob/master/Documents/final_report.pdf][Final Report]]
 * General Resources
 | Name           | Email                   |
 |----------------+-------------------------|
