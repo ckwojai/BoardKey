@@ -36,7 +36,7 @@ class BLECentralManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegat
         localCentralManager.connect(localPeripheral)
     }
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("Connected!")
+        print("Connected to service\(String(describing: peripheral.services?.description))")
         localPeripheral.discoverServices([IosKeyboardServiceCBUUID])
     }
     // ========================

@@ -8,7 +8,6 @@
 
 import Foundation
     func keyboardKeyDown(key: CGKeyCode) {
-        print("Inside core function")
         let source = CGEventSource(stateID: .hidSystemState)
         let event = CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: true)
         event?.post(tap: .cghidEventTap)

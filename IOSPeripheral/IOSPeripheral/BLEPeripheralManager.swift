@@ -120,14 +120,6 @@ class BLEPeripheralManager: NSObject, CBPeripheralManagerDelegate {
     // When Central subscribes to a characteristics
     func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
         print("peripheralManager didSubscribeTo characteristic :\n" + characteristic.uuid.uuidString)
-//
-//        if characteristic.uuid.uuidString == CH_READ {
-//            self.notifyCharac = characteristic as? CBMutableCharacteristic
-//            self.notifyCentral = central
-//
-//            // start a timer, which will update the value, every xyz seconds.
-//            self.notifyValueTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.notifyValue), userInfo: nil, repeats: true)
-//        }
     }
     // ========================
     // Self defined fucntions
